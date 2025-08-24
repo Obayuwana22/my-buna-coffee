@@ -1,5 +1,6 @@
 import React from "react";
 import { Clock, Mail } from "lucide-react";
+import * as motion from "motion/react-client";
 
 const Hero = () => {
   const handleKeepMeUpdated = () => {
@@ -26,8 +27,14 @@ const Hero = () => {
           <div className="absolute bottom-16 right-64 w-4 h-4 rounded-full bg-[#5f4137]"></div>
         </div>
 
-        <div className="max-w-2xl mx-auto text-center space-y-8 relative z-10">
-          {/* Hero Section */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{
+            duration: 1,
+          }}
+          className="max-w-2xl mx-auto text-center space-y-8 relative z-10"
+        >
           <div className="space-y-6">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full font-medium bg-[#fec857] text-black">
               <Clock className="w-4 h-4" />
@@ -86,7 +93,7 @@ const Hero = () => {
               </a>
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </div>
   );

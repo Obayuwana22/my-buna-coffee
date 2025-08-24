@@ -1,5 +1,6 @@
 import React from "react";
-import logo from "../assets/png/Main Logo Left Gold.png";
+import logo from "../assets/png/buna-logo.png";
+import * as motion from "motion/react-client";
 
 const Header = () => {
   const handleKeepMeUpdated = () => {
@@ -9,20 +10,27 @@ const Header = () => {
     }
   };
   return (
-    <div>
+    <motion.div
+      initial={{ opacity: 0, scale: 0 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{
+        duration: 1,
+      }}
+      className=""
+    >
       {/* Header Navigation */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-[#126634]/95 backdrop-blur-sm border-b border-[#fec857]/20">
+      <header className=" bg-[#126634]/95 backdrop-blur-sm border-b border-[#fec857]/20">
         <div className="max-w-6xl mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             {/* Logo */}
             <div className="flex items-center gap-2 w-24">
-                <img src={logo} alt="my buna coffee logo" />
+              <img src={logo} alt="my buna coffee logo" />
               {/* <Coffee className="w-8 h-8 text-[#fec857]" /> */}
               {/* <div className="text-xl font-bold text-[#fec857]">የኔ ቡና</div> */}
             </div>
 
             {/* Navigation */}
-            <nav className="hidden md:flex items-center gap-8">
+            {/* <nav className="hidden md:flex items-center gap-8">
               <a
                 href="#home"
                 className="text-[#f2e2c7] hover:text-[#fec857] transition-colors"
@@ -41,7 +49,7 @@ const Header = () => {
               >
                 Contact
               </a>
-            </nav>
+            </nav> */}
 
             {/* CTA Button */}
             <button
@@ -54,7 +62,7 @@ const Header = () => {
           </div>
         </div>
       </header>
-    </div>
+    </motion.div>
   );
 };
 

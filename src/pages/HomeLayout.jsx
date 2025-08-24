@@ -1,6 +1,6 @@
 import React from "react";
 import Hero from "../components/Hero";
-import Footer from "../components/Footer";
+import Form from "../components/Form";
 import Header from "../components/Header";
 
 const HomeLayout = () => {
@@ -8,7 +8,7 @@ const HomeLayout = () => {
     <div>
       <Header />
       <Hero />
-      <Footer />
+      <Form />
     </div>
   );
 };
