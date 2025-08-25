@@ -29,7 +29,7 @@ const PopupModal = ({ firstName, email }) => {
             Thank You, {firstName}!
           </h3>
           <p className="text-lg font-medium text-[#5f4137]">
-            Welcome to the Buna family!
+            Welcome to the My Buna Coffee family!
           </p>
         </div>
 
