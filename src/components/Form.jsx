@@ -11,8 +11,10 @@ const Form = ({ showForm }) => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isValidEmail, setIsValidEmail] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const isDisabled = !(
     firstName.trim() &&
@@ -33,11 +35,38 @@ const Form = ({ showForm }) => {
   };
 
   const handleSubmit = (e) => {
+    setLoading(true);
     e.preventDefault();
     if (isValidEmail && firstName.trim() && lastName.trim()) {
-      setIsSubmitted(true);
-      // Here you would typically send the data to your backend
-      console.log("Form submitted:", { firstName, lastName, email });
+      fetch("http://localhost:5000/send-email", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: `${firstName} ${lastName}`,
+          email,
+          message: `Phone Number: ${phoneNumber}`,
+        }),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          setLoading(false);
+          if (data.message) {
+            alert("Message sent successfully!");
+            setIsSubmitted(true);
+            setFirstName("");
+            setLastName("");
+            setEmail("");
+            setPhoneNumber("");
+          } else {
+            alert("Something went wrong. Please try again later.");
+          }
+        })
+        .catch(() => {
+          setLoading(false);
+          alert("Something went wrong. Please try again later.");
+        });
     }
   };
 
@@ -65,19 +94,6 @@ const Form = ({ showForm }) => {
               backgroundSize: "500px",
             }}
           ></div>
-          <div className="absolute inset-0 opacity-5">
-            <div className="absolute top-10 left-10 w-3 h-3 rounded-full bg-[#5f4137]"></div>
-            <div className="absolute top-20 left-32 w-2 h-2 rounded-full bg-black"></div>
-            <div className="absolute top-32 left-16 w-4 h-4 rounded-full bg-[#5f4137]"></div>
-            <div className="absolute top-40 left-64 w-3 h-3 rounded-full bg-black"></div>
-            <div className="absolute top-16 right-20 w-2 h-2 rounded-full bg-[#5f4137]"></div>
-            <div className="absolute top-48 right-40 w-3 h-3 rounded-full bg-black"></div>
-            <div className="absolute top-64 right-16 w-4 h-4 rounded-full bg-[#5f4137]"></div>
-            <div className="absolute bottom-20 left-24 w-3 h-3 rounded-full bg-black"></div>
-            <div className="absolute bottom-40 left-48 w-2 h-2 rounded-full bg-[#5f4137]"></div>
-            <div className="absolute bottom-32 right-32 w-3 h-3 rounded-full bg-black"></div>
-            <div className="absolute bottom-16 right-64 w-4 h-4 rounded-full bg-[#5f4137]"></div>
-          </div>
 
           <motion.div
             ref={ref}
@@ -96,7 +112,7 @@ const Form = ({ showForm }) => {
                       <h2 className="text-2xl font-bold mb-2 text-[#126634]">
                         Get Early Access
                       </h2>
-                      <p className="text-sm text-[#5f4137] max-w-sm mx-auto">
+                      <p className="text-sm text-[#5f4137] max-w-[430px] mx-auto">
                         Join our exclusive list and be among the first to
                         experience our launch.
                       </p>
@@ -109,7 +125,7 @@ const Form = ({ showForm }) => {
                           placeholder="First Name"
                           value={firstName}
                           onChange={(e) => setFirstName(e.target.value)}
-                          className="border bg-white border-[#5f4137] focus:outline-4 focus:outline-[#c7ada4] focus:border-none  text-black rounded-md px-3 py-1 flex-1"
+                          className="border bg-white border-[#5f4137] focus:outline-4 focus:outline-[#c7ada4] focus:border-none  text-black rounded-md px-3 py-2 flex-1 text-sm"
                           required
                         />
 
@@ -118,7 +134,7 @@ const Form = ({ showForm }) => {
                           placeholder="Last Name"
                           value={lastName}
                           onChange={(e) => setLastName(e.target.value)}
-                          className="border bg-white border-[#5f4137] focus:outline-4 focus:outline-[#c7ada4] focus:border-none text-black rounded-md px-3 py-1 flex-1"
+                          className="border bg-white border-[#5f4137] focus:outline-4 focus:outline-[#c7ada4] focus:border-none text-black rounded-md px-3 py-2 flex-1 text-sm"
                           required
                         />
                       </div>
@@ -129,7 +145,7 @@ const Form = ({ showForm }) => {
                           placeholder="Email Address"
                           value={email}
                           onChange={handleEmailChange}
-                          className="w-full pr-10 border bg-white border-[#5f4137]  focus:outline-4 focus:outline-[#c7ada4] focus:border-none  text-black rounded-lg px-3 py-1"
+                          className="w-full pr-10 border bg-white border-[#5f4137]  focus:outline-4 focus:outline-[#c7ada4] focus:border-none  text-black rounded-lg px-3 py-2 text-sm"
                           required
                         />
                         {isValidEmail && (
@@ -137,36 +153,38 @@ const Form = ({ showForm }) => {
                         )}
                       </div>
 
+                      <div>
+                        <div className="text-[10px] mb-2 text-[#5f4137]">
+                          (Optional)
+                        </div>
+                        <input
+                          type="tel"
+                          placeholder="Phone Number"
+                          value={phoneNumber}
+                          onChange={(e) => setPhoneNumber(e.target.value)}
+                          className="w-full border bg-white border-[#5f4137] focus:outline-4 focus:outline-[#c7ada4] focus:border-none  text-black rounded-md px-3 py-2 flex-1 text-sm"
+                        />
+                      </div>
+
                       <button
                         type="submit"
                         disabled={isDisabled}
                         className={`${
-                          isDisabled ? "opacity-50" : "opacity-100"
-                        } w-full text-[#f2e2c7] bg-[#126634] font-medium rounded-md py-1 cursor-pointer hover:opacity-90 transition-opacity`}
+                          isDisabled
+                            ? "opacity-50 cursor-not-allowed"
+                            : "opacity-100 cursor-pointer "
+                        } w-full text-[#f2e2c7] bg-[#126634] font-medium rounded-md py-1 transition-opacity`}
                       >
-                        Get Notified
+                        {loading ? "submitting..." : "Get Notified"}
                       </button>
                     </form>
                   </div>
                 </div>
               ) : (
                 <PopupModal firstName={firstName} email={email} />
-                // <div className="border shadow-lg bg-[#f2e2c7] border-[#5f4137] rounded-sm">
-                //   <div className="p-8 text-center">
-                //     <CheckCircle className="w-16 h-16 mx-auto mb-4 text-[#126634]" />
-                //     <h3 className="text-2xl font-bold mb-2 text-[#126634]">
-                //       Welcome, {firstName}!
-                //     </h3>
-                //     <p className="text-sm text-[#5f4137]">
-                //       Thanks for joining our waitlist. We'll notify you at {email}{" "}
-                //       as soon as we launch.
-                //     </p>
-                //   </div>
-                // </div>
               )}
             </div>
           </motion.div>
-
           <Footer />
         </div>
       )}

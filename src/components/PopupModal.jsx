@@ -3,6 +3,8 @@ import { Coffee, CheckCircle } from "lucide-react";
 import * as motion from "motion/react-client";
 import logo from "../assets/png/buna-logo-green.png";
 
+import Socials from "./Socials";
+
 const PopupModal = ({ firstName, email }) => {
   return (
     <motion.div
@@ -51,6 +53,26 @@ const PopupModal = ({ firstName, email }) => {
             updates and coffee tips!
           </p>
         </div>
+
+        <Socials />
+
+        {/* <div className="flex items-center justify-center gap-4 py-5">
+          {contacts.map((contact, index) => {
+            const Icon = contact.color;
+            return (
+              <a
+                key={index}
+                href={contact.link}
+                target={contact.link.startsWith("http") ? "_blank" : "_self"}
+                rel="noopener noreferrer"
+                aria-label={contact.label}
+                className={` ${contact.color} flex items-center gap-2 md:text-lg text-gray-700 hover:text-[#5f4137] transition-colors duration-300`}
+              >
+                <Icon className={`w-7 h-7 ${contact.icon}`} />
+              </a>
+            );
+          })}
+        </div> */}
 
         {/* <div className="pt-4 border-t border-[#5f4137]/20">
           <p className="text-sm font-medium text-[#126634]">

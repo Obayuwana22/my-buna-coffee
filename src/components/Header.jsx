@@ -2,7 +2,7 @@ import React from "react";
 import logo from "../assets/png/buna-logo.png";
 import * as motion from "motion/react-client";
 
-const Header = ({setShowForm}) => {
+const Header = ({ setShowForm }) => {
   const handleKeepMeUpdated = () => {
     setShowForm(true);
     setTimeout(() => {
@@ -22,11 +22,11 @@ const Header = ({setShowForm}) => {
       className=""
     >
       {/* Header Navigation */}
-      <header className=" bg-[#126634]/95 backdrop-blur-sm border-b border-[#fec857]/20">
+      <header className=" bg-[#126634]/95 backdrop-blur-sm border-b border-[#fec857]/20 fixed top-0 left-0 w-full z-[1000]">
         <div className="max-w-6xl mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             {/* Logo */}
-            <div className="flex items-center gap-2 w-24">
+            <div className="flex items-center gap-2 w-16">
               <img src={logo} alt="my buna coffee logo" />
               {/* <Coffee className="w-8 h-8 text-[#fec857]" /> */}
               {/* <div className="text-xl font-bold text-[#fec857]">የኔ ቡና</div> */}
@@ -57,8 +57,7 @@ const Header = ({setShowForm}) => {
             {/* CTA Button */}
             <button
               onClick={handleKeepMeUpdated}
-              size="sm"
-              className="bg-[#fec857] px-4 py-1 rounded-full font-medium text-black hover:opacity-90 transition-opacity cursor-pointer"
+              className="text-sm bg-[#fec857] px-4 py-1 rounded-full font-medium text-black hover:opacity-90 transition-opacity cursor-pointer"
             >
               Join Waitlist
             </button>

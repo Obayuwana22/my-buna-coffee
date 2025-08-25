@@ -8,7 +8,7 @@ const HomeLayout = () => {
   return (
     <div>
       <Header setShowForm={setShowForm} />
-      <Hero setShowForm={setShowForm} />
+      <Hero showForm={showForm} setShowForm={setShowForm} />
       <Form showForm={showForm} />
     </div>
   );

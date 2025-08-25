@@ -2,7 +2,7 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <div className="mt-auto pt-8 text-sm text-[#126634] opacity-80 w-full flex flex-col items-center">
+    <div className="mt-auto pt-8 text-sm text-[#126634] opacity-80 w-full flex flex-col items-center text-center">
       <p>© 2025 My Buna Coffee. All rights reserved.</p>
       <div className="flex justify-center gap-4 mt-2">
         <a
