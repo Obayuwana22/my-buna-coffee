@@ -14,7 +14,7 @@ const Hero = ({ setShowForm }) => {
   return (
     <div>
       {/* Hero Section */}
-      <div className="min-h-screen relative overflow-hidden flex items-center justify-center p-4">
+      <div className="min-h-screen relative overflow-hidden flex mt-20 justify-center p-4">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-10 left-10 w-3 h-3 rounded-full bg-[#5f4137]"></div>
           <div className="absolute top-20 left-32 w-2 h-2 rounded-full bg-black"></div>
