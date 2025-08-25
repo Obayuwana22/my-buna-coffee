@@ -5,6 +5,7 @@ import pattern from "../assets/svg/Pattern Black.svg";
 import Footer from "./Footer";
 import * as motion from "motion/react-client";
 import { useInView } from "motion/react";
+import PopupModal from "./PopupModal";
 
 const Form = () => {
   const [firstName, setFirstName] = useState("");
@@ -12,6 +13,12 @@ const Form = () => {
   const [email, setEmail] = useState("");
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isValidEmail, setIsValidEmail] = useState(false);
+  const isDisabled = !(
+    firstName.trim() &&
+    lastName.trim() &&
+    email.trim() &&
+    isValidEmail
+  );
 
   const validateEmail = (email) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -35,6 +42,7 @@ const Form = () => {
 
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
+
   return (
     <div
       ref={ref}
@@ -84,7 +92,7 @@ const Form = () => {
                   <h2 className="text-2xl font-bold mb-2 text-[#126634]">
                     Get Early Access
                   </h2>
-                  <p className="text-sm text-[#5f4137]">
+                  <p className="text-sm text-[#5f4137] max-w-sm mx-auto">
                     Join our exclusive list and be among the first to experience
                     our launch.
                   </p>
@@ -97,7 +105,7 @@ const Form = () => {
                       placeholder="First Name"
                       value={firstName}
                       onChange={(e) => setFirstName(e.target.value)}
-                      className="border bg-white border-[#5f4137] text-black rounded-md px-3 py-1 flex-1"
+                      className="border bg-white border-[#5f4137] focus:outline-4 focus:outline-[#c7ada4] focus:border-none  text-black rounded-md px-3 py-1 flex-1"
                       required
                     />
 
@@ -106,7 +114,7 @@ const Form = () => {
                       placeholder="Last Name"
                       value={lastName}
                       onChange={(e) => setLastName(e.target.value)}
-                      className="border bg-white border-[#5f4137] text-black rounded-md px-3 py-1 flex-1"
+                      className="border bg-white border-[#5f4137] focus:outline-4 focus:outline-[#c7ada4] focus:border-none text-black rounded-md px-3 py-1 flex-1"
                       required
                     />
                   </div>
@@ -117,7 +125,7 @@ const Form = () => {
                       placeholder="Email Address"
                       value={email}
                       onChange={handleEmailChange}
-                      className="w-full pr-10 border bg-white border-[#5f4137] text-black rounded-lg px-3 py-1"
+                      className="w-full pr-10 border bg-white border-[#5f4137]  focus:outline-4 focus:outline-[#c7ada4] focus:border-none  text-black rounded-lg px-3 py-1"
                       required
                     />
                     {isValidEmail && (
@@ -127,10 +135,10 @@ const Form = () => {
 
                   <button
                     type="submit"
-                    disabled={
-                      !isValidEmail || !firstName.trim() || !lastName.trim()
-                    }
-                    className="w-full bg-[#126634] text-[#f2e2c7] font-medium rounded-md py-1 cursor-pointer hover:opacity-90 transition-opacity"
+                    disabled={isDisabled}
+                    className={`${
+                      isDisabled ? "opacity-50" : "opacity-100"
+                    } w-full text-[#f2e2c7] bg-[#126634] font-medium rounded-md py-1 cursor-pointer hover:opacity-90 transition-opacity`}
                   >
                     Get Notified
                   </button>
@@ -138,23 +146,23 @@ const Form = () => {
               </div>
             </div>
           ) : (
-            <div className="border shadow-lg bg-[#f2e2c7] border-[#5f4137]">
-              <div className="p-8 text-center">
-                <CheckCircle className="w-16 h-16 mx-auto mb-4 text-[#126634]" />
-                <h3 className="text-2xl font-bold mb-2 text-[#126634]">
-                  Welcome, {firstName}!
-                </h3>
-                <p className="text-sm text-[#5f4137]">
-                  Thanks for joining our waitlist. We'll notify you at {email}{" "}
-                  as soon as we launch.
-                </p>
-              </div>
-            </div>
+            <PopupModal firstName={firstName} email={email} />
+            // <div className="border shadow-lg bg-[#f2e2c7] border-[#5f4137] rounded-sm">
+            //   <div className="p-8 text-center">
+            //     <CheckCircle className="w-16 h-16 mx-auto mb-4 text-[#126634]" />
+            //     <h3 className="text-2xl font-bold mb-2 text-[#126634]">
+            //       Welcome, {firstName}!
+            //     </h3>
+            //     <p className="text-sm text-[#5f4137]">
+            //       Thanks for joining our waitlist. We'll notify you at {email}{" "}
+            //       as soon as we launch.
+            //     </p>
+            //   </div>
+            // </div>
           )}
         </div>
       </motion.div>
 
-      {/* Footer */}
       <Footer />
     </div>
   );
