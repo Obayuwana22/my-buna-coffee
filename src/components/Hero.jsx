@@ -1,13 +1,15 @@
-import React from "react";
 import { Clock, Mail } from "lucide-react";
 import * as motion from "motion/react-client";
 
-const Hero = () => {
+const Hero = ({ setShowForm }) => {
   const handleKeepMeUpdated = () => {
-    const formSection = document.getElementById("signup-form");
-    if (formSection) {
-      formSection.scrollIntoView({ behavior: "smooth" });
-    }
+    setShowForm(true);
+    setTimeout(() => {
+      const formSection = document.getElementById("signup-form");
+      if (formSection) {
+        formSection.scrollIntoView({ behavior: "smooth" });
+      }
+    }, 100);
   };
   return (
     <div>

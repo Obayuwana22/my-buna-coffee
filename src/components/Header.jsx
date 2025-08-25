@@ -2,12 +2,15 @@ import React from "react";
 import logo from "../assets/png/buna-logo.png";
 import * as motion from "motion/react-client";
 
-const Header = () => {
+const Header = ({setShowForm}) => {
   const handleKeepMeUpdated = () => {
-    const formSection = document.getElementById("signup-form");
-    if (formSection) {
-      formSection.scrollIntoView({ behavior: "smooth" });
-    }
+    setShowForm(true);
+    setTimeout(() => {
+      const formSection = document.getElementById("signup-form");
+      if (formSection) {
+        formSection.scrollIntoView({ behavior: "smooth" });
+      }
+    }, 100);
   };
   return (
     <motion.div

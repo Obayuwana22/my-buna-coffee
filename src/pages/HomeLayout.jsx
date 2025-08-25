@@ -1,14 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import Hero from "../components/Hero";
 import Form from "../components/Form";
 import Header from "../components/Header";
 
 const HomeLayout = () => {
+  const [showForm, setShowForm] = useState(false);
   return (
     <div>
-      <Header />
-      <Hero />
-      <Form />
+      <Header setShowForm={setShowForm} />
+      <Hero setShowForm={setShowForm} />
+      <Form showForm={showForm} />
     </div>
   );
 };

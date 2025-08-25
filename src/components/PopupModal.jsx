@@ -1,6 +1,7 @@
 import React from "react";
 import { Coffee, CheckCircle } from "lucide-react";
 import * as motion from "motion/react-client";
+import logo from "../assets/png/buna-logo-green.png";
 
 const PopupModal = ({ firstName, email }) => {
   return (
@@ -14,8 +15,9 @@ const PopupModal = ({ firstName, email }) => {
     >
       <div className="p-8 text-center space-y-6">
         <div className="relative">
-          <div className="w-20 h-20 mx-auto mb-4 bg-[#126634] rounded-full flex items-center justify-center">
+          <div className="w-20 h-20 mx-auto mb-4 flex items-center justify-center">
             <Coffee className="w-10 h-10 text-[#fec857]" />
+            <img src={logo} alt="my buna coffee logo" />
           </div>
           <div className="absolute -top-2 -right-2 w-8 h-8 bg-[#fec857] rounded-full flex items-center justify-center">
             <CheckCircle className="w-5 h-5 text-[#126634]" />
@@ -50,7 +52,7 @@ const PopupModal = ({ firstName, email }) => {
           </p>
         </div>
 
-        <div className="pt-4 border-t border-[#5f4137]/20">
+        {/* <div className="pt-4 border-t border-[#5f4137]/20">
           <p className="text-sm font-medium text-[#126634]">
             🌟 Expected Launch: 2025
           </p>
@@ -58,7 +60,7 @@ const PopupModal = ({ firstName, email }) => {
             Get ready for an authentic Ethiopian coffee experience like no
             other.
           </p>
-        </div>
+        </div> */}
       </div>
     </motion.div>
   );
