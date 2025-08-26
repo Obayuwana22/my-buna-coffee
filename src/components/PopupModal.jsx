@@ -45,7 +45,7 @@ const PopupModal = ({ firstName, email }) => {
 
         <div className="space-y-2">
           <p className="text-sm text-[#5f4137] font-medium">
-            📧 We'll notify you at:{" "}
+            📧 We'll notify you at:
             <span className="text-[#126634]">{email}</span>
           </p>
           <p className="text-xs text-[#5f4137] opacity-80">

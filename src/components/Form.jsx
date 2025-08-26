@@ -16,6 +16,7 @@ const Form = ({ showForm }) => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isValidEmail, setIsValidEmail] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [submittedData, setSubmittedData] = useState(null);
 
   const isDisabled = !(
     firstName.trim() &&
@@ -57,6 +58,7 @@ const Form = ({ showForm }) => {
           if (data.message) {
             console.log("Message sent successfully!");
             setIsSubmitted(true);
+            setSubmittedData({ firstName, email });
             setFirstName("");
             setLastName("");
             setEmail("");
@@ -161,7 +163,6 @@ const Form = ({ showForm }) => {
                         </div>
                         <input
                           type="tel"
-                          pattern="[0-9]"
                           onInput={(e) => {
                             e.target.value = e.target.value.replace(
                               /[^0-9]/g,
@@ -191,7 +192,10 @@ const Form = ({ showForm }) => {
                   </div>
                 </div>
               ) : (
-                <PopupModal firstName={firstName} email={email} />
+                <PopupModal
+                  firstName={submittedData?.firstName}
+                  email={submittedData?.email}
+                />
               )}
             </div>
           </motion.div>
