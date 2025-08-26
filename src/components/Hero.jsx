@@ -14,7 +14,7 @@ const Hero = ({ showForm, setShowForm }) => {
   };
   return (
     <div
-      className={`relative overflow-hidden flex items-center justify-center p-4 pt-20 pb-20`}
+      className={`min-h-screen relative overflow-hidden flex items-center justify-center p-4 pt-20 pb-20`}
       // className={`${
       //   showForm && "min-h-screen"
       // }min-h-screen relative overflow-hidden flex items-center justify-center p-4 pt-20`}
