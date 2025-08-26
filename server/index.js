@@ -18,7 +18,7 @@ app.post("/send-email", async (req, res) => {
     secure: true,
     auth: {
       user: "info@mybunacoffee.com", // Replace with your WhoGoHost email
-      pass: "yourpassword", // Replace with your WhoGoHost email password
+      pass: "nPgC8vvApNMFfaS", // Replace with your WhoGoHost email password
     },
   });
 
