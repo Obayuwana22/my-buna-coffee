@@ -6,6 +6,7 @@ import Footer from "./Footer";
 import * as motion from "motion/react-client";
 import { useInView } from "motion/react";
 import PopupModal from "./PopupModal";
+import Spinner from "./Spinner";
 
 const Form = ({ showForm }) => {
   const [firstName, setFirstName] = useState("");
@@ -44,28 +45,29 @@ const Form = ({ showForm }) => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          name: `${firstName} ${lastName}`,
+          firstName,
+          lastName,
           email,
-          message: `Phone Number: ${phoneNumber}`,
+          phoneNumber: phoneNumber || "not provided",
         }),
       })
         .then((res) => res.json())
         .then((data) => {
           setLoading(false);
           if (data.message) {
-            alert("Message sent successfully!");
+            console.log("Message sent successfully!");
             setIsSubmitted(true);
             setFirstName("");
             setLastName("");
             setEmail("");
             setPhoneNumber("");
           } else {
-            alert("Something went wrong. Please try again later.");
+            console.log("Something went wrong. Please try again later.");
           }
         })
-        .catch(() => {
+        .catch((error) => {
           setLoading(false);
-          alert("Something went wrong. Please try again later.");
+          console.log("Something went wrong. Please try again later:", error);
         });
     }
   };
@@ -159,6 +161,14 @@ const Form = ({ showForm }) => {
                         </div>
                         <input
                           type="tel"
+                          pattern="[0-9]"
+                          onInput={(e) => {
+                            e.target.value = e.target.value.replace(
+                              /[^0-9]/g,
+                              ""
+                            );
+                          }}
+                          inputMode="numeric"
                           placeholder="Phone Number"
                           value={phoneNumber}
                           onChange={(e) => setPhoneNumber(e.target.value)}
@@ -175,7 +185,7 @@ const Form = ({ showForm }) => {
                             : "opacity-100 cursor-pointer "
                         } w-full text-[#f2e2c7] bg-[#126634] font-medium rounded-md py-1 transition-opacity`}
                       >
-                        {loading ? "submitting..." : "Get Notified"}
+                        {loading ? <Spinner /> : "Get Notified"}
                       </button>
                     </form>
                   </div>
