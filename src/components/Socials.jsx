@@ -33,7 +33,7 @@ const Socials = () => {
             target={contact.link.startsWith("http") ? "_blank" : "_self"}
             rel="noopener noreferrer"
             aria-label={contact.label}
-            className="w-8 h-8 flex items-center justify-center rounded-full bg-[#126634]  shadow-md hover:bg-[#0e4e28] transition-colors duration-300 md:w-12 md:h-12"
+            className="w-8 h-8 flex items-center justify-center rounded-full bg-[#126634]  shadow-md hover:bg-[#0e4e28] transition-colors duration-300 md:w-10 md:h-10"
           >
             <Icon className="text-[#fec857] md:w-5 md:h-5" />
           </a>

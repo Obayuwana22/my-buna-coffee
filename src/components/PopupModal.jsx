@@ -18,8 +18,8 @@ const PopupModal = ({ firstName, email }) => {
       <div className="p-8 text-center space-y-6">
         <div className="relative">
           <div className="w-20 h-20 mx-auto mb-4 flex items-center justify-center">
-            <Coffee className="w-10 h-10 text-[#fec857]" />
-            <img src={logo} alt="my buna coffee logo" />
+            {/* <Coffee className="w-10 h-10 text-[#fec857]" /> */}
+            <img src={logo} alt="my buna coffee logo" className="w-16 h-16" />
           </div>
           <div className="absolute -top-2 -right-2 w-8 h-8 bg-[#fec857] rounded-full flex items-center justify-center">
             <CheckCircle className="w-5 h-5 text-[#126634]" />
@@ -27,26 +27,26 @@ const PopupModal = ({ firstName, email }) => {
         </div>
 
         <div className="space-y-3">
-          <h3 className="text-3xl font-bold text-[#126634]">
+          <h3 className="text:xl md:text-2xl font-bold text-[#126634]">
             Thank You, {firstName}!
           </h3>
-          <p className="text-lg font-medium text-[#5f4137]">
+          <p className="text-xs md:text-lg font-medium text-[#5f4137]">
             Welcome to My Buna Coffee family!
           </p>
         </div>
 
         <div className="bg-[#126634] rounded-lg p-4 text-[#f2e2c7] space-y-2">
           <p className="font-medium">☕ Your coffee journey begins soon!</p>
-          <p className="text-sm opacity-90">
+          <p className="text-xs opacity-90">
             We're brewing something special just for you. You'll be the first to
             know when our premium coffee experience launches.
           </p>
         </div>
 
-        <div className="space-y-2">
+        <div className="flex flex-col items-center space-y-2">
           <p className="text-sm text-[#5f4137] font-medium">
-            📧 We'll notify you at:
-            <span className="text-[#126634]">{email}</span>
+            📧 We'll notify you at :
+            <span className="text-[#126634] ml-1">{email}</span>
           </p>
           <p className="text-xs text-[#5f4137] opacity-80">
             In the meantime, follow us on social media for behind-the-scenes

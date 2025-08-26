@@ -39,8 +39,9 @@ const Form = ({ showForm }) => {
   const handleSubmit = (e) => {
     setLoading(true);
     e.preventDefault();
+
     if (isValidEmail && firstName.trim() && lastName.trim()) {
-      fetch("https://mybunacoffee.com/submit.php", {
+      fetch("https://api.mybunacoffee.com/submit.php", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -186,7 +187,7 @@ const Form = ({ showForm }) => {
                             : "opacity-100 cursor-pointer "
                         } w-full text-[#f2e2c7] bg-[#126634] font-medium rounded-md py-1 transition-opacity text-xs`}
                       >
-                        {loading ? <Spinner /> : "Get Notified"}
+                        {loading ? <Spinner /> : (<span>Get Notified</span>)}
                       </button>
                     </form>
                   </div>
