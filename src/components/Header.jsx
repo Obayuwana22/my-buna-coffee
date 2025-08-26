@@ -13,27 +13,25 @@ const Header = ({ setShowForm }) => {
     }, 100);
   };
   return (
-    <motion.div
-      initial={{ opacity: 0, scale: 0 }}
-      animate={{ opacity: 1, scale: 1 }}
-      transition={{
-        duration: 1.5,
-      }}
-      className=""
-    >
-      {/* Header Navigation */}
-      <header className=" bg-[#126634]/95 backdrop-blur-sm border-b border-[#fec857]/20 fixed top-0 left-0 w-full z-[1000]">
-        <div className="max-w-6xl mx-auto px-4 py-4">
-          <div className="flex items-center justify-between">
-            {/* Logo */}
-            <div className="flex items-center gap-2 w-16">
-              <img src={logo} alt="my buna coffee logo" />
-              {/* <Coffee className="w-8 h-8 text-[#fec857]" /> */}
-              {/* <div className="text-xl font-bold text-[#fec857]">የኔ ቡና</div> */}
-            </div>
+    <header className="bg-[#126634]/95 backdrop-blur-sm border-b border-[#fec857]/20 fixed top-0 left-0 w-full z-[1000]">
+      <div className="max-w-6xl mx-auto px-4 py-4">
+        <div className="flex items-center justify-between">
+          {/* Logo */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{
+              duration: 1.5,
+            }}
+            className="flex items-center gap-2 w-16"
+          >
+            <img src={logo} alt="my buna coffee logo" />
+            {/* <Coffee className="w-8 h-8 text-[#fec857]" /> */}
+            {/* <div className="text-xl font-bold text-[#fec857]">የኔ ቡና</div> */}
+          </motion.div>
 
-            {/* Navigation */}
-            {/* <nav className="hidden md:flex items-center gap-8">
+          {/* Navigation */}
+          {/* <nav className="hidden md:flex items-center gap-8">
               <a
                 href="#home"
                 className="text-[#f2e2c7] hover:text-[#fec857] transition-colors"
@@ -54,17 +52,21 @@ const Header = ({ setShowForm }) => {
               </a>
             </nav> */}
 
-            {/* CTA Button */}
-            <button
-              onClick={handleKeepMeUpdated}
-              className="text-sm bg-[#fec857] px-4 py-1 rounded-full font-medium text-black hover:opacity-90 transition-opacity cursor-pointer"
-            >
-              Join Waitlist
-            </button>
-          </div>
+          {/* CTA Button */}
+          <motion.button
+            initial={{ opacity: 0, scale: 0 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{
+              duration: 1.5,
+            }}
+            onClick={handleKeepMeUpdated}
+            className="text-sm bg-[#fec857] px-4 py-1 rounded-full font-medium text-black hover:opacity-90 transition-opacity cursor-pointer"
+          >
+            Join Waitlist
+          </motion.button>
         </div>
-      </header>
-    </motion.div>
+      </div>
+    </header>
   );
 };
 

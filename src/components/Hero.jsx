@@ -14,7 +14,7 @@ const Hero = ({ showForm, setShowForm }) => {
   };
   return (
     <div
-    className={`min-h-screen relative overflow-hidden flex items-center justify-center p-4 pt-20`}
+      className={`min-h-screen relative overflow-hidden flex items-center justify-center p-4 pt-20`}
       // className={`${
       //   showForm && "min-h-screen"
       // }min-h-screen relative overflow-hidden flex items-center justify-center p-4 pt-20`}
@@ -25,7 +25,7 @@ const Hero = ({ showForm, setShowForm }) => {
           initial={{ opacity: 0, scale: 0 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{
-            duration: 1,
+            duration: 1.5,
           }}
           className="max-w-2xl mx-auto text-center space-y-8 relative z-10"
         >
@@ -47,30 +47,31 @@ const Hero = ({ showForm, setShowForm }) => {
               </div>
             </div> */}
 
-            <h1 className="text-4xl md:text-5xl font-bold leading-tight text-[#f2e2c7]">
+            <h1 className="text-2xl md:text-5xl font-bold leading-tight text-[#f2e2c7]">
               Something Amazing
               <br />
               <span className="text-[#fec857]">Is Brewing</span>
             </h1>
 
-            <p className="text-xl max-w-lg mx-auto leading-relaxed text-[#f2e2c7] opacity-90">
+            <p className="text-sm md:text-xl max-w-lg mx-auto leading-relaxed text-[#f2e2c7] opacity-90">
               We're crafting an incredible coffee experience that will transform
               your daily ritual. Be the first to know when we launch.
             </p>
           </div>
 
           {/* CTA Button */}
-          <div className="flex items-center">
+          <div className="relative flex items-center">
             <motion.div
               initial={{ x: 0, opacity: 1 }}
-              animate={{ x: [0, -30, 0] }}
+              animate={{ x: [0, -10, 0] }}
               transition={{
                 duration: 2,
                 repeat: Infinity,
                 repeatType: "reverse",
                 ease: "easeInOut",
               }}
-              className="hidden md:block"
+              // className="hidden md:block"
+              className="absolute left-10"
             >
               <FaHandPointRight
                 className="text-[#fec857] w-6 h-6"
@@ -79,7 +80,7 @@ const Hero = ({ showForm, setShowForm }) => {
             </motion.div>
             <button
               onClick={handleKeepMeUpdated}
-              className="flex items-center mx-auto text-lg font-medium px-8 py-3 cursor-pointer rounded-lg bg-[#fec857] text-black hover:opacity-90 transition-opacity"
+              className="flex items-center mx-auto text-sm md:text-lg font-medium px-5 py-3 md:px-8 cursor-pointer rounded-lg bg-[#fec857] text-black hover:opacity-90 transition-opacity"
             >
               <Mail className="w-5 h-5 mr-2" />
               Keep Me Updated
@@ -87,7 +88,7 @@ const Hero = ({ showForm, setShowForm }) => {
           </div>
 
           {/* Footer */}
-          <div className="pt-8 text-sm text-[#f2e2c7] opacity-80">
+          <div className="pt-8 text-xs md:text-sm text-[#f2e2c7] opacity-80">
             <p>© 2025 My Buna Coffee. All rights reserved.</p>
             <div className="flex justify-center gap-4 mt-2 ">
               <a
