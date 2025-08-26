@@ -14,7 +14,7 @@ const Hero = ({ showForm, setShowForm }) => {
   };
   return (
     <div
-      className={`min-h-screen relative overflow-hidden flex items-center justify-center p-4 pt-20`}
+      className={`relative overflow-hidden flex items-center justify-center p-4 pt-20 pb-20`}
       // className={`${
       //   showForm && "min-h-screen"
       // }min-h-screen relative overflow-hidden flex items-center justify-center p-4 pt-20`}
@@ -30,7 +30,7 @@ const Hero = ({ showForm, setShowForm }) => {
           className="max-w-2xl mx-auto text-center space-y-8 relative z-10"
         >
           <div className="space-y-6">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full font-medium bg-[#fec857] text-black text-sm">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full font-medium bg-[#fec857] text-black text-xs ">
               <Clock className="w-4 h-4" />
               Coming Soon
             </div>
@@ -47,13 +47,13 @@ const Hero = ({ showForm, setShowForm }) => {
               </div>
             </div> */}
 
-            <h1 className="text-2xl md:text-5xl font-bold leading-tight text-[#f2e2c7]">
+            <h1 className="text-2xl font-bold leading-tight text-[#f2e2c7]">
               Something Amazing
               <br />
               <span className="text-[#fec857]">Is Brewing</span>
             </h1>
 
-            <p className="text-sm md:text-xl max-w-lg mx-auto leading-relaxed text-[#f2e2c7] opacity-90">
+            <p className="text-sm max-w-lg mx-auto leading-relaxed text-[#f2e2c7] opacity-90">
               We're crafting an incredible coffee experience that will transform
               your daily ritual. Be the first to know when we launch.
             </p>
@@ -80,7 +80,7 @@ const Hero = ({ showForm, setShowForm }) => {
             </motion.div>
             <button
               onClick={handleKeepMeUpdated}
-              className="flex items-center mx-auto text-sm md:text-lg font-medium px-5 py-3 md:px-8 cursor-pointer rounded-lg bg-[#fec857] text-black hover:opacity-90 transition-opacity"
+              className="flex items-center mx-auto text-sm font-medium px-3 py-2 md:px-8 cursor-pointer rounded-lg bg-[#fec857] text-black hover:opacity-90 transition-opacity"
             >
               <Mail className="w-5 h-5 mr-2" />
               Keep Me Updated
