@@ -6,9 +6,9 @@ import Header from "../components/Header";
 const HomeLayout = () => {
   const [showForm, setShowForm] = useState(false);
   return (
-    <div>
+    <div className="relative">
       <Header setShowForm={setShowForm} />
-      <Hero showForm={showForm} setShowForm={setShowForm} />
+      <Hero setShowForm={setShowForm} />
       <Form showForm={showForm} />
     </div>
   );

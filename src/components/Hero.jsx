@@ -2,7 +2,7 @@ import { Clock, Mail } from "lucide-react";
 import * as motion from "motion/react-client";
 import { FaHandPointRight } from "react-icons/fa";
 
-const Hero = ({ showForm, setShowForm }) => {
+const Hero = ({ setShowForm }) => {
   const handleKeepMeUpdated = () => {
     setShowForm(true);
     setTimeout(() => {
@@ -14,7 +14,7 @@ const Hero = ({ showForm, setShowForm }) => {
   };
   return (
     <div
-      className={`min-h-screen relative overflow-hidden flex items-center justify-center p-4 pt-20 pb-20`}
+      className={`min-h-screen relative overflow-hidden flex items-center justify-center p-4 pt-20 `}
       // className={`${
       //   showForm && "min-h-screen"
       // }min-h-screen relative overflow-hidden flex items-center justify-center p-4 pt-20`}
@@ -71,10 +71,10 @@ const Hero = ({ showForm, setShowForm }) => {
                 ease: "easeInOut",
               }}
               // className="hidden md:block"
-              className="absolute left-10"
+              className="absolute left-0 pointer"
             >
               <FaHandPointRight
-                className="text-[#fec857] w-6 h-6"
+                className="text-[#fec857] w-6 h-6 "
                 aria-hidden="true"
               />
             </motion.div>

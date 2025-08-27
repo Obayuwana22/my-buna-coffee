@@ -13,7 +13,7 @@ const Header = ({ setShowForm }) => {
     }, 100);
   };
   return (
-    <header className="bg-[#126634]/95 backdrop-blur-sm border-b border-[#fec857]/20 ">
+    <header className="absolute top-0 left-0 w-full bg-[#126634]/95 backdrop-blur-sm border-b border-[#fec857]/20 ">
       <div className="max-w-6xl mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
