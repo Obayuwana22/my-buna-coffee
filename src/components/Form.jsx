@@ -185,9 +185,9 @@ const Form = ({ showForm }) => {
                           isDisabled
                             ? "opacity-50 cursor-not-allowed"
                             : "opacity-100 cursor-pointer "
-                        } w-full text-[#f2e2c7] bg-[#126634] font-medium rounded-md py-1 transition-opacity text-xs`}
+                        } w-full text-[#f2e2c7] bg-[#126634] font-medium rounded-md py-1 transition-opacity text-xs py-2`}
                       >
-                        {loading ? <Spinner /> : (<span>Get Notified</span>)}
+                        {loading ? <Spinner /> : " Get Notified"}
                       </button>
                     </form>
                   </div>
